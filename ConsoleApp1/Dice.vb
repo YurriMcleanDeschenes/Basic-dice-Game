@@ -14,28 +14,58 @@
         End Set
     End Property
 
-    Private numberOfFaces As Integer = 6
+    Private visualFace1 As String = "┌───────┐"
+    Private visualFace2 = New String() {"│       │", "│ 〇     │", "│     〇 │", "│ 〇   〇 │", "│ 〇   〇 │", "│ 〇 〇 〇 │"}
+    Private visualFace3 = New String() {"│   〇   │", "│       │", "│   〇   │", "│       │", "│   〇   │", "│       │"}
+    Private visualFace4 = New String() {"│       │", "│     〇 │", "│ 〇     │", "│ 〇   〇 │", "│ 〇   〇 │", "│ 〇 〇 〇 │"}
+    Private visualFace5 As String = "└───────┘"
 
-    Public Property Faces() As Integer
+    Public Property Face1() As String
         Get
             ' Gets the property value.
-            Return numberOfFaces
+            Return visualFace1
         End Get
-        Set(ByVal Faces As Integer)
-            ' Sets the property value.
-            numberOfFaces = Faces
+        Set(ByVal visual As String)
+        End Set
+    End Property
+    Public Property Face2() As String
+        Get
+            Return visualFace2(diceValue - 1)
+        End Get
+        Set(ByVal visual As String)
+        End Set
+    End Property
+    Public Property Face3() As String
+        Get
+            Return visualFace3(diceValue - 1)
+        End Get
+        Set(ByVal visual As String)
+        End Set
+    End Property
+    Public Property Face4() As String
+        Get
+            Return visualFace4(diceValue - 1)
+        End Get
+        Set(ByVal visual As String)
+        End Set
+    End Property
+    Public Property Face5() As String
+        Get
+            ' Gets the property value.
+            Return visualFace5
+        End Get
+        Set(ByVal visual As String)
         End Set
     End Property
 
     ' These are the methods
     Public Sub ThrowDice()
         ' use the method to randomize the dice
-        Value = Int(((numberOfFaces + 1) * Rnd()) + 1)
+        Randomize()
+        Value = Int((6 * Rnd()) + 1)
     End Sub
-    Public Sub New(ByVal numberFaces As Integer)
+    Public Sub New()
         ' use the method to randomize the dice
-        Console.WriteLine(numberFaces)
-        Faces = numberFaces
         ThrowDice()
     End Sub
 End Class
