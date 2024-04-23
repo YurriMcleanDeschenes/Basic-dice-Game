@@ -2,7 +2,7 @@
     Private dices = New List(Of Dice)
     Private average As Double
 
-    Public Property AverageTotal() As Integer
+    Public Property AverageTotal() As Double
         Get
             Return average
         End Get
